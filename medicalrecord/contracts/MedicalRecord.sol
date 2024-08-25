@@ -1,7 +1,7 @@
-// SPDX-License-Identifier: SEE LICENSE IN LICENSE
-pragma solidity ^0.8.22;
+//SPDX-License-Identifier:MIT
+pragma solidity ^0.8.0;
 
-contract MedicalRecord {
+contract MedicalRecords {
     uint public id;
     mapping(uint => Record) records;
     mapping(uint => bool) public isDeleted;
@@ -17,7 +17,7 @@ contract MedicalRecord {
         string treatment;
     }
 
-    event MedicalRecord__addRecord(
+    event MedicalRecords__AddRecord(
         uint id,
         uint timestamp,
         string name,
@@ -28,9 +28,8 @@ contract MedicalRecord {
         string diagnosis,
         string treatment
     );
-
     event MedicalRecords__DeleteRecord(
-        uint recordId,
+        uint id,
         uint timestamp,
         string name,
         uint age,
@@ -62,7 +61,7 @@ contract MedicalRecord {
             _diagnosis,
             _treatment
         );
-        emit MedicalRecord__addRecord(
+        emit MedicalRecords__AddRecord(
             id,
             block.timestamp,
             _name,
@@ -75,7 +74,7 @@ contract MedicalRecord {
         );
     }
 
-    function deleteRecord(uint256 _id) public {
+    function deleteRecord(uint _id) public {
         require(!isDeleted[_id], "The record is already deleted");
         Record storage record = records[_id];
         emit MedicalRecords__DeleteRecord(
@@ -121,7 +120,7 @@ contract MedicalRecord {
         );
     }
 
-    function getRecordId() public view returns (uint) {
+    function getid() public view returns (uint) {
         return id;
     }
 
