@@ -91,4 +91,73 @@ contract MedicalRecord {
         );
         isDeleted[_id] = true;
     }
+
+    function getRecord(
+        uint _id
+    )
+        public
+        view
+        returns (
+            uint,
+            string memory,
+            uint,
+            string memory,
+            string memory,
+            string memory,
+            string memory,
+            string memory
+        )
+    {
+        Record storage record = records[_id];
+        return (
+            record.timestamp,
+            record.name,
+            record.age,
+            record.gender,
+            record.bloodType,
+            record.allergies,
+            record.diagnosis,
+            record.treatment
+        );
+    }
+
+    function getRecordId() public view returns (uint) {
+        return id;
+    }
+
+    function getTimeStamp(uint _id) public view returns (uint) {
+        return records[_id].timestamp;
+    }
+
+    function getName(uint _id) public view returns (string memory) {
+        return records[_id].name;
+    }
+
+    function getAge(uint _id) public view returns (uint) {
+        return records[_id].age;
+    }
+
+    function getGender(uint _id) public view returns (string memory) {
+        return records[_id].gender;
+    }
+
+    function getBloodType(uint _id) public view returns (string memory) {
+        return records[_id].bloodType;
+    }
+
+    function getAllergies(uint _id) public view returns (string memory) {
+        return records[_id].allergies;
+    }
+
+    function getDiagnosis(uint _id) public view returns (string memory) {
+        return records[_id].diagnosis;
+    }
+
+    function getTreatment(uint _id) public view returns (string memory) {
+        return records[_id].treatment;
+    }
+
+    function getDeleted(uint256 _id) public view returns (bool) {
+        return isDeleted[_id];
+    }
 }
