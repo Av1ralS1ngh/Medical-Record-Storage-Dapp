@@ -29,6 +29,18 @@ contract MedicalRecord {
         string treatment
     );
 
+    event MedicalRecords__DeleteRecord(
+        uint recordId,
+        uint timestamp,
+        string name,
+        uint age,
+        string gender,
+        string bloodType,
+        string allergies,
+        string diagnosis,
+        string treatment
+    );
+
     function addRecord(
         string memory _name,
         uint _age,
@@ -61,5 +73,22 @@ contract MedicalRecord {
             _diagnosis,
             _treatment
         );
+    }
+
+    function deleteRecord(uint256 _id) public {
+        require(!isDeleted[_id], "The record is already deleted");
+        Record storage record = records[_id];
+        emit MedicalRecords__DeleteRecord(
+            record.id,
+            block.timestamp,
+            record.name,
+            record.age,
+            record.gender,
+            record.bloodType,
+            record.allergies,
+            record.diagnosis,
+            record.treatment
+        );
+        isDeleted[_id] = true;
     }
 }
