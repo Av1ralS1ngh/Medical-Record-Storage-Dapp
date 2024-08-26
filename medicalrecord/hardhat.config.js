@@ -10,11 +10,11 @@ module.exports = {
   networks: {
     localhost: {},
     goerli: {
-      url: https://${goerliApiKey}, // Ensure the URL is complete
+      url: `https://${goerliApiKey}`,
       accounts: privateKeys ? privateKeys.split(",") : [],
     },
     mumbai: {
-      url: https://${mumbaiApiKey}, // Ensure the URL is complete
+      url: `https://${mumbaiApiKey}`,
       accounts: privateKeys ? privateKeys.split(",") : [],
     },
   },
