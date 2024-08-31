@@ -1,57 +1,88 @@
-.Navbar{
+.Navbar {
     display: flex;
     flex-direction: row;
     height: 4rem;
-    background-color: #333;
+    background-color: #1a1a1a; /* Darker black for better contrast */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
 }
-.nav__name{
+
+.nav__name {
     display: flex;
-   flex: 1;
-   align-items: center;
-   justify-content: center;
-   color: white;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem; /* Increase font size for better readability */
 }
-.nav__name img{ padding: 2rem;}
-.nav__networkSelector{
+
+.nav__name img {
+    padding: 1.5rem; /* Reduced padding for better alignment */
+    border-radius: 50%; /* Make the image circular */
+}
+
+.nav__networkSelector {
     display: flex;
-   flex:1;
-   align-items: center;
+    flex: 1;
+    align-items: center;
 }
-.nav__networkSelector select{
-    border: 2px solid white;
-    padding: 0.5rem 1.5rem;
-    border-radius:0.4em;
-    margin: 2rem;
+
+.nav__networkSelector select {
+    border: 2px solid #555; /* Light gray border for better visibility */
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.4em;
+    margin: 1rem;
     background-color: #333;
     color: white;
+    font-family: Georgia, serif; /* Clean sans-serif font */
+    cursor: pointer;
 }
-.nav__balance{
+.nav__networkSelector select:focus {
+    outline: none;
+    border-color: #2196F3;
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.3);
+}
+
+.nav__balance {
     flex: 1;
     padding: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    
 }
-.nav__balance-box{
-    border: 2px solid white;
-    border-radius: 2rem;
-    flex:1;
-    height: 2.5rem;
-    margin: 2rem 4rem ;
-    cursor: pointer;
-}
-select option { color: white; }
 
-.nav__myBalance{
+.nav__balance-box {
+    border: 2px solid #888; /* Medium gray border for balance box */
+    border-radius: 20px; /* Increased radius for softer corners */
+    flex: 1;
+    height: 2.5rem;
+    margin: 1rem 2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.nav__balance-box:hover {
+    background-color: #444; /* Darker gray on hover */
+}
+
+select option {
     color: white;
 }
-.nav__myAccount{
+
+.nav__myBalance {
+    color: white;
+    font-weight: bold; /* Make balance text bolder */
+}
+
+.nav__myAccount {
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-left: auto; /* Push account icon to right */
 }
-.identicon{
+
+.identicon {
+    width: 24px; /* Set fixed width for consistency */
+    height: 24px; /* Set fixed height for consistency */
     margin-left: 0.5rem;
 }

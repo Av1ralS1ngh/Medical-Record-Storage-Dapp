@@ -1,29 +1,31 @@
 body {
-    background-color: #8d8c8c;
-    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Roboto', Arial, sans-serif;
 }
 
 form {
-    width: 500px;
-    margin: 0 auto;
-    background-color: #fff;
-    padding: 30px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
+    width: 550px;
+    margin: 40px auto;
+    background-color: #1e1e1e;
+    padding: 35px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
 }
 
 h1 {
     text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    color: #333;
+    margin-bottom: 30px;
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: 500;
 }
 
 label {
     display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #333;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #b0b0b0;
 }
 
 input[type="text"],
@@ -31,41 +33,66 @@ input[type="number"],
 select,
 textarea,
 input[type="tel"] {
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
+    padding: 12px 15px;
+    border-radius: 6px;
+    border: 1px solid #444;
     width: 100%;
     margin-bottom: 20px;
     font-size: 16px;
-    color: #333;
-    background-color: #f2f2f2;
-    border: 2px solid #333;
+    color: #ffffff;
+    background-color: #262626;
+    transition: all 0.3s ease;
 }
 
-select option {
-    color: #333;
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus,
+input[type="tel"]:focus {
+    outline: none;
+    border-color: #2196F3;
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.3);
 }
 
 input[type="submit"] {
-    padding: 10px 20px;
-    background-color: #333;
-    color: #fff;
+    padding: 12px 25px;
+    background-color: #2196F3;
+    color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    font-weight: 500;
 }
 
 input[type="submit"]:hover {
-    background-color: #3e8e41;
+    background-color: #1976D2;
+    transform: translateY(-2px);
 }
 
 input[type="tel"]:invalid {
-    border-color: #333;
+    border-color: #F44336;
 }
 
 input[type="tel"]:valid {
     border-color: #4CAF50;
 }
-select option { color: white; 
-background: #333;}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-10px); }
+}
+
+input:focus {
+    animation: fadeIn 0.3s ease-out;
+}
+
+input:not(:focus) {
+    animation: fadeOut 0.3s ease-out;
+}

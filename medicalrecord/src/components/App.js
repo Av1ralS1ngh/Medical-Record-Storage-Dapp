@@ -21,7 +21,11 @@ function App() {
   const loadBlockchainData = async () => {
     const provider = loadProvider(dispatch);
     const chainId = await loadNetwork(provider, dispatch);
-    const medical_config = config[chainId].medical;
+    const medical_config = config[chainId]?.medical;
+    if (!medical_config) {
+      console.error(`No medical config found for chain ID: ${chainId}`);
+      return;
+    }
     window.ethereum.on("accountsChanged", () => {
       loadAccount(provider, dispatch);
     });

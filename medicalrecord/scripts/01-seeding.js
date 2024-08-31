@@ -25,7 +25,7 @@ async function main() {
       "B positive",
       "Allergic rhinitis",
       "Hypertension ",
-      "Medications"
+      "Medications" 
     );
   await transactionResponse.wait();
   console.log(`Record added with id ${await medical.getRecordId()}`);

@@ -14,21 +14,47 @@ const Navbar = () => {
   const connectHandler = async (e) => {
     await loadAccount(provider, dispatch);
   };
-  const networkHandler = async (e) => {
-    await window.ethereum.request({
-      method: "wallet_switchEthereumChain",
-      params: [
-        {
-          chainId: e.target.value,
+  const addEthereumChain = async (chainId) => {
+    try {
+      const chainParams = {
+        chainId: `0x${parseInt(chainId, 16).toString(16)}`,
+        chainName: "Localhost 31337",
+        nativeCurrency: {
+          name: "ETH",
+          symbol: "ETH",
+          decimals: 18,
         },
-      ],
-    });
+        rpcUrls: ["http://localhost:8545"],
+        blockExplorerUrls: ["http://localhost:8545"],
+      };
+      await window.ethereum.request({
+        method: "wallet_addEthereumChain",
+        params: [chainParams],
+      });
+    } catch (error) {
+      console.error("Failed to add chain:", error);
+    }
   };
+  const networkHandler = async (e) => {
+    const selectedChainId = e.target.value;
+    if (selectedChainId === "0x31337") {
+      await addEthereumChain(selectedChainId);
+    }
+    try {
+      await window.ethereum.request({
+        method: "wallet_switchEthereumChain",
+        params: [{ chainId: selectedChainId }],
+      });
+    } catch (error) {
+      console.error("Failed to switch network:", error);
+    }
+  };
+  
   return (
     <div className="Navbar">
       <div className="nav__name">
         <img src={healthReport} alt="" width="40" height="40" />
-        <h2>Subham Medical Record </h2>
+        <h2> Medical Record </h2>
       </div>
       <div className="nav__networkSelector">
         <select
@@ -40,21 +66,21 @@ const Navbar = () => {
           <option value="0" disabled>
             Select Network
           </option>
-          <option value="31337">Localhost</option>
+          <option value="0x31337">Localhost</option>
           <option value="0x5">Goerli</option>
-          <option value="0x13881">Mumbai</option>
+          <option value="0x11155111">Sepolia</option>
         </select>
       </div>
       <div className="nav__balance">
         {balance ? (
           <p className="nav__myBalance">
             <small>My Balance : </small>
-            {Number(balance).toFixed(4)}
+            {Number(balance).toFixed(2)}
           </p>
         ) : (
           <p className="nav__myBalance">
             <small>My Balance : </small>
-            0ETH
+             0ETH
           </p>
         )}
         {account ? (
